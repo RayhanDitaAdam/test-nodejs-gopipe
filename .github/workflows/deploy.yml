@@ -56,5 +56,5 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd ~/apps/gopipe
-            %[1]s install
-            pm2 restart gopipe || pm2 start %[1]s --name gopipe -- start || pm2 start %[1]s --name gopipe -- preview
+            pnpm install
+            pm2 restart gopipe || pm2 start pnpm --name gopipe -- start || pm2 start pnpm --name gopipe -- preview
