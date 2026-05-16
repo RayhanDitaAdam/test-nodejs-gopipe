@@ -55,6 +55,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
+            export PATH=$PATH:/usr/bin:/usr/local/bin:$HOME/.local/bin:$HOME/.npm-global/bin
             cd ~/apps/gopipe
-            npx pnpm install
-            npx pm2 restart gopipe || npx pm2 start "npx pnpm start" --name gopipe || npx pm2 start "npx pnpm preview" --name gopipe
+            npm install
+            pm2 restart gopipe || pm2 start "npm run start" --name gopipe || pm2 start "npm run preview" --name gopipe
