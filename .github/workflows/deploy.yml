@@ -2,7 +2,7 @@ name: Deploy
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, master ]
 
 env:
   PORT: 3000
@@ -19,11 +19,17 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install pnpm
+        if: pnpm == 'pnpm'
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: npm run build || true
+        run: pnpm build || true
 
       - name: Deploy via Rsync
         uses: burnett01/rsync-deployments@7.0.2
