@@ -18,7 +18,7 @@ function App() {
         <div>
           <h1 className="text-5xl font-extrabold text-blue-500 mb-4">GoPipe CI/CD is LIVE! 🚀</h1>
           <p className="text-xl text-zinc-400">
-            Edit <code>src/App.tsx</code> to see the magic happen again.
+            Edit <code>src/App.tsx</code> to see the magic happen again. Hahai
           </p>
         </div>
         <button
