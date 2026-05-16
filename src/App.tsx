@@ -16,9 +16,9 @@ function App() {
           <img src={viteLogo} className="vite" alt="Vite logo" />
         </div>
         <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
+          <h1 className="text-5xl font-extrabold text-blue-500 mb-4">GoPipe CI/CD is LIVE! 🚀</h1>
+          <p className="text-xl text-zinc-400">
+            Edit <code>src/App.tsx</code> to see the magic happen again.
           </p>
         </div>
         <button
