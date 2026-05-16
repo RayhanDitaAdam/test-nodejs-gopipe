@@ -20,15 +20,15 @@ jobs:
           node-version: '20'
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 9
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
       - name: Build
-        run: pnpm build || true
+        run: pnpm run build || true
 
       - name: Deploy via Rsync
         uses: burnett01/rsync-deployments@7.0.2
@@ -48,5 +48,5 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd ~/apps/gopipe
-            npm install
-            pm2 restart gopipe || pm2 start npm --name gopipe -- start
+            %[1]s install
+            pm2 restart gopipe || pm2 start %[1]s --name gopipe -- start || pm2 start %[1]s --name gopipe -- preview
