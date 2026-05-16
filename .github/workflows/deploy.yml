@@ -55,7 +55,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            source ~/.bashrc || source ~/.profile || true
+            export PATH=$PATH:$HOME/.npm-global/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin
             cd ~/apps/gopipe
             pnpm install
             pm2 restart gopipe || pm2 start pnpm --name gopipe -- start || pm2 start pnpm --name gopipe -- preview
