@@ -55,4 +55,6 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            /bin/bash -l -c "cd ~/apps/gopipe && pnpm install && (pm2 restart gopipe || pm2 start pnpm --name gopipe -- start || pm2 start pnpm --name gopipe -- preview)"
+            cd ~/apps/gopipe
+            npx pnpm install
+            npx pm2 restart gopipe || npx pm2 start "npx pnpm start" --name gopipe || npx pm2 start "npx pnpm preview" --name gopipe
